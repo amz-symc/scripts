@@ -188,7 +188,7 @@ class BRO(object):
     def __init__(self,data):
         self.data = data
         #fields indicator   indicator_type  meta.source meta.desc  meta.severity   meta.confidence
-        self.headers = ''.join(['#fields indicator\t','indicator_type\t','meta.source\t','meta.desc\t','meta.severity\t','meta.confidence\n'])
+        self.headers = ''.join(['#fields indicator\t','indicator\t','indicator_type\t','meta.source\t','meta.desc\t','meta.severity\t','meta.confidence\n'])
 
 
     def convert(self,destfile):
@@ -197,11 +197,11 @@ class BRO(object):
             f.write(self.headers)
             if self.data['files']:
                 for bfile in self.data['files']:
-                    f.write('\t'.join([bfile['file_md5'],'Intel::FILE_HASH','MATI',self.data['reportname'],'high','100','\n']))
+                    f.write('\t'.join([bfile['file_md5'],'Intel::FILE_HASH','MATI',self.data['reportname'],'high','100'+'\n']))
 
             if 'url' in self.data:
                 for url in self.data['url']:
-                    f.write('\t'.join([url,'Intel::URL','MATI',self.data['reportname'],'high','100','\n']))
+                    f.write('\t'.join([url,'Intel::URL','MATI',self.data['reportname'],'high','100'+'\n']))
 
             if 'domain' in self.data:
                 for domain in self.data['domain']:
